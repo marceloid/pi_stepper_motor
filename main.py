@@ -15,8 +15,8 @@ y=0
 
 
 
-def delay(seconds):
-    time.sleep(seconds)
+def delay():
+    time.sleep(0.0000001)
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(out1,GPIO.OUT)
@@ -52,49 +52,49 @@ try:
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==1:
                   GPIO.output(out1,GPIO.HIGH)
                   GPIO.output(out2,GPIO.HIGH)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==2:  
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.HIGH)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==3:    
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.HIGH)
                   GPIO.output(out3,GPIO.HIGH)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==4:  
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.HIGH)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==5:
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.HIGH)
                   GPIO.output(out4,GPIO.HIGH)
-                  delay(1)
+                  delay()
               elif i==6:    
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.HIGH)
-                  delay(1)
+                  delay()
               elif i==7:    
                   GPIO.output(out1,GPIO.HIGH)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.HIGH)
-                  delay(1)
+                  delay()
               if i==7:
                   i=0
                   continue
@@ -117,49 +117,49 @@ try:
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==1:
                   GPIO.output(out1,GPIO.HIGH)
                   GPIO.output(out2,GPIO.HIGH)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==2:  
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.HIGH)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==3:    
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.HIGH)
                   GPIO.output(out3,GPIO.HIGH)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==4:  
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.HIGH)
                   GPIO.output(out4,GPIO.LOW)
-                  delay(1)
+                  delay()
               elif i==5:
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.HIGH)
                   GPIO.output(out4,GPIO.HIGH)
-                  delay(1)
+                  delay()
               elif i==6:    
                   GPIO.output(out1,GPIO.LOW)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.HIGH)
-                  delay(1)
+                  delay()
               elif i==7:    
                   GPIO.output(out1,GPIO.HIGH)
                   GPIO.output(out2,GPIO.LOW)
                   GPIO.output(out3,GPIO.LOW)
                   GPIO.output(out4,GPIO.HIGH)
-                  delay(1)
+                  delay()
               if i==0:
                   i=7
                   continue
