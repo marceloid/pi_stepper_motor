@@ -1,3 +1,5 @@
+# Código original retirado deste site: https://www.electronicshub.org/raspberry-pi-stepper-motor-control/
+
 import RPi.GPIO as GPIO
 import time 
 
