@@ -1,6 +1,6 @@
 # Código original retirado deste site: https://www.electronicshub.org/raspberry-pi-stepper-motor-control/
 
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO # https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/ Instruções do uso básico da biblioteca.
 import time 
 
 out1 = 13
