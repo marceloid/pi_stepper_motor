@@ -13,6 +13,7 @@ positive=0
 negative=0
 y=0
 
+print('adicionei essa mensagem')
 
 
 def delay():
