@@ -10,15 +10,9 @@ class Direcao(Enum):
 
 class PiStepperMotor():
     def __init__(self) -> None:
-        # Original
-        # out1 = 13
-        # out2 = 11
-        # out3 = 15
-        # out4 = 12
-
         self.coil_1a = 11
-        self.coil_1b = 12
-        self.coil_2a = 13
+        self.coil_1b = 13
+        self.coil_2a = 12
         self.coil_2b = 15
         print(GPIO.RPI_INFO)
         
@@ -76,7 +70,7 @@ class PiStepperMotor():
 if __name__ == '__main__':
     carpi = PiStepperMotor()
 
-    carpi.set_pins(11, 12, 13, 15)
+    carpi.set_pins(11, 13, 12, 15)
     carpi.volta_completa(direcao=Direcao.ESQUERDA)
     carpi.stop()
 
