@@ -36,12 +36,12 @@ class PiStepperMotor():
         GPIO.output(self.coil_2a,GPIO.LOW)
         GPIO.output(self.coil_2b,GPIO.LOW)
     
-    def delay():
+    def delay(self):
         time.sleep(0.001)
         
     def step(self):
-        time_ini = time()
-        while(time() - time_ini < 10):
+        time_ini = time.time()
+        while(time.time() - time_ini < 10):
             GPIO.output(self.coil_1a,GPIO.HIGH)
             GPIO.output(self.coil_1b,GPIO.HIGH)
             GPIO.output(self.coil_2a,GPIO.LOW)
