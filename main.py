@@ -40,20 +40,14 @@ class PiStepperMotor():
         
     def volta_completa(self, horario=True):
         secs = 0.003
-        if horario:
-            combinacao = [
-                (True, True, False, False),
-                (False, True, True, False),
-                (False, False, True, True),
-                (True, False, False, True),
-            ]
-        else:
-            combinacao = [
-                (True, False, False, True),
-                (False, False, True, True),
-                (False, True, True, False),
-                (True, True, False, False),
-            ]
+        combinacao = [
+            (True, True, False, False),
+            (False, True, True, False),
+            (False, False, True, True),
+            (True, False, False, True),
+        ]
+        if not horario:
+            combinacao.reverse()
         
         pinos = (
             self.coil_1a,
@@ -61,8 +55,8 @@ class PiStepperMotor():
             self.coil_2a,
             self.coil_2b,
         )
-        caminhada = 0
-        while(caminhada <= 2048): # 2048 foi o que calculei para dar uma volta completa.
+        caminhada = 1
+        while(caminhada <= 2048): # 2048 foi o que calculei para dar uma volta completa. Este site explica o porquê: https://arduinoinfo.mywikis.net/wiki/SmallSteppers#Test_Sketch:_Rotate_1_turn_in_each_direction.2C_repeat
             for passo in combinacao:
                 GPIO.output(pinos, passo)
                 self.delay(secs)
