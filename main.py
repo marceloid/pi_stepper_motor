@@ -37,35 +37,36 @@ class PiStepperMotor():
         GPIO.output(self.coil_2a,GPIO.LOW)
         GPIO.output(self.coil_2b,GPIO.LOW)
     
-    def delay(self):
-        time.sleep(0.01)
+    def delay(self, secs):
+        time.sleep(secs)
         
     def step(self):
         time_ini = time.time()
         passo = 1
+        secs = 0.003
         while(time.time() - time_ini < 10):
             GPIO.output(self.coil_1a,GPIO.HIGH)
             GPIO.output(self.coil_1b,GPIO.HIGH)
             GPIO.output(self.coil_2a,GPIO.LOW)
             GPIO.output(self.coil_2b,GPIO.LOW)
-            self.delay()
+            self.delay(secs)
             GPIO.output(self.coil_1a,GPIO.LOW)
             GPIO.output(self.coil_1b,GPIO.HIGH)
             GPIO.output(self.coil_2a,GPIO.HIGH)
             GPIO.output(self.coil_2b,GPIO.LOW)
-            self.delay()
+            self.delay(secs)
             GPIO.output(self.coil_1a,GPIO.LOW)
             GPIO.output(self.coil_1b,GPIO.LOW)
             GPIO.output(self.coil_2a,GPIO.HIGH)
             GPIO.output(self.coil_2b,GPIO.HIGH)
-            self.delay()
+            self.delay(secs)
             GPIO.output(self.coil_1a,GPIO.HIGH)
             GPIO.output(self.coil_1b,GPIO.LOW)
             GPIO.output(self.coil_2a,GPIO.LOW)
             GPIO.output(self.coil_2b,GPIO.HIGH)
-            self.delay()
-            print(f'{passo}º passo...')
-            passo = passo + 1
+            self.delay(secs)
+            #print(f'{passo}º passo...')
+            #passo = passo + 1
     
     def stop(self):
         print('Desligando o motor...')
@@ -75,7 +76,7 @@ class PiStepperMotor():
 if __name__ == '__main__':
     carpi = PiStepperMotor()
 
-    carpi.set_pins(13, 11, 15, 12)
+    carpi.set_pins(11, 12, 13, 15)
     carpi.step()
     carpi.stop()
 
