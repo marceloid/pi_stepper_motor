@@ -10,19 +10,21 @@ class Direcao(Enum):
 
 class PiStepperMotor():
     def __init__(self) -> None:
+        # Pinagem padrão
         self.coil_1a = 11
         self.coil_1b = 13
         self.coil_2a = 12
         self.coil_2b = 15
-        print(GPIO.RPI_INFO)
+        self.setup_motor()
         
-
-    def set_pins(self, pin_1a, pin_1b, pin_2a, pin_2b):
+    def change_pins(self, pin_1a, pin_1b, pin_2a, pin_2b):
         self.coil_1a = pin_1a
         self.coil_1b = pin_1b
         self.coil_2a = pin_2a
         self.coil_2b = pin_2b
 
+
+    def setup_motor(self):
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.coil_1a,GPIO.OUT)
         GPIO.setup(self.coil_1b,GPIO.OUT)
@@ -69,7 +71,5 @@ class PiStepperMotor():
 
 if __name__ == '__main__':
     carpi = PiStepperMotor()
-
-    carpi.set_pins(11, 13, 12, 15)
     carpi.volta_completa(direcao=Direcao.ESQUERDA)
     carpi.stop()
