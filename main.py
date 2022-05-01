@@ -1,5 +1,6 @@
 # Código original retirado deste site: https://www.electronicshub.org/raspberry-pi-stepper-motor-control/
 
+from unicodedata import name
 import RPi.GPIO as GPIO # https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/ Instruções do uso básico da biblioteca.
 import time 
 
@@ -41,6 +42,7 @@ class PiStepperMotor():
         
     def step(self):
         time_ini = time.time()
+        passo = 1
         while(time.time() - time_ini < 10):
             GPIO.output(self.coil_1a,GPIO.HIGH)
             GPIO.output(self.coil_1b,GPIO.HIGH)
@@ -52,9 +54,19 @@ class PiStepperMotor():
             GPIO.output(self.coil_2a,GPIO.HIGH)
             GPIO.output(self.coil_2b,GPIO.HIGH)
             self.delay()
+            print('{passo}º passo...')
+            passo = passo + 1
     
     def stop(self):
         GPIO.cleanup()
+
+
+if __name__ == '__main__':
+    carpi = PiStepperMotor()
+
+    carpi.set_pins(13, 11, 15, 12)
+    carpi.step()
+    carpi.stop()
 
 # i=0
 # positive=0
