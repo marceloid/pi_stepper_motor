@@ -1,7 +1,12 @@
 # Código original retirado deste site: https://www.electronicshub.org/raspberry-pi-stepper-motor-control/
 import RPi.GPIO as GPIO # https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/ Instruções do uso básico da biblioteca.
 import time 
-import itertools
+
+from enum import Enum
+
+class Direcao(Enum):
+    DIREITA = 0
+    ESQUERDA = 1
 
 class PiStepperMotor():
     def __init__(self) -> None:
@@ -38,7 +43,7 @@ class PiStepperMotor():
     def delay(self, secs):
         time.sleep(secs)
         
-    def volta_completa(self, horario=True):
+    def volta_completa(self, direcao=Direcao.DIREITA):
         secs = 0.003
         combinacao = [
             (True, True, False, False),
@@ -46,7 +51,7 @@ class PiStepperMotor():
             (False, False, True, True),
             (True, False, False, True),
         ]
-        if not horario:
+        if direcao == Direcao.ESQUERDA:
             combinacao.reverse()
         
         pinos = (
@@ -72,7 +77,7 @@ if __name__ == '__main__':
     carpi = PiStepperMotor()
 
     carpi.set_pins(11, 12, 13, 15)
-    carpi.volta_completa(horario=False)
+    carpi.volta_completa(direcao=Direcao.ESQUERDA)
     carpi.stop()
 
 # i=0
