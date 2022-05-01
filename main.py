@@ -1,9 +1,8 @@
 # Código original retirado deste site: https://www.electronicshub.org/raspberry-pi-stepper-motor-control/
-
-from unicodedata import name
+from turtle import delay
 import RPi.GPIO as GPIO # https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/ Instruções do uso básico da biblioteca.
 import time 
-
+import itertools
 
 class PiStepperMotor():
     def __init__(self) -> None:
@@ -41,30 +40,48 @@ class PiStepperMotor():
         time.sleep(secs)
         
     def step(self):
-        time_ini = time.time()
-        passo = 1
+        # time_ini = time.time()
         secs = 0.003
-        while(time.time() - time_ini < 10):
-            GPIO.output(self.coil_1a,GPIO.HIGH)
-            GPIO.output(self.coil_1b,GPIO.HIGH)
-            GPIO.output(self.coil_2a,GPIO.LOW)
-            GPIO.output(self.coil_2b,GPIO.LOW)
-            self.delay(secs)
-            GPIO.output(self.coil_1a,GPIO.LOW)
-            GPIO.output(self.coil_1b,GPIO.HIGH)
-            GPIO.output(self.coil_2a,GPIO.HIGH)
-            GPIO.output(self.coil_2b,GPIO.LOW)
-            self.delay(secs)
-            GPIO.output(self.coil_1a,GPIO.LOW)
-            GPIO.output(self.coil_1b,GPIO.LOW)
-            GPIO.output(self.coil_2a,GPIO.HIGH)
-            GPIO.output(self.coil_2b,GPIO.HIGH)
-            self.delay(secs)
-            GPIO.output(self.coil_1a,GPIO.HIGH)
-            GPIO.output(self.coil_1b,GPIO.LOW)
-            GPIO.output(self.coil_2a,GPIO.LOW)
-            GPIO.output(self.coil_2b,GPIO.HIGH)
-            self.delay(secs)
+        combinacao = [
+            (True, True, False, False),
+            (False, True, True, False),
+            (False, False, True, True),
+            (True, False, False, True),
+        ]
+        
+        pinos = (
+            self.coil_1a,
+            self.coil_1b,
+            self.coil_2a,
+            self.coil_2b,
+        )
+        caminhada = 0
+        while(caminhada <= 4096):
+            for passo in combinacao:
+                GPIO.output(pinos, passo)
+                delay(secs)
+                caminhada = caminhada + 1
+        # while(time.time() - time_ini < 10):
+        #     GPIO.output(self.coil_1a,GPIO.HIGH)
+        #     GPIO.output(self.coil_1b,GPIO.HIGH)
+        #     GPIO.output(self.coil_2a,GPIO.LOW)
+        #     GPIO.output(self.coil_2b,GPIO.LOW)
+        #     self.delay(secs)
+        #     GPIO.output(self.coil_1a,GPIO.LOW)
+        #     GPIO.output(self.coil_1b,GPIO.HIGH)
+        #     GPIO.output(self.coil_2a,GPIO.HIGH)
+        #     GPIO.output(self.coil_2b,GPIO.LOW)
+        #     self.delay(secs)
+        #     GPIO.output(self.coil_1a,GPIO.LOW)
+        #     GPIO.output(self.coil_1b,GPIO.LOW)
+        #     GPIO.output(self.coil_2a,GPIO.HIGH)
+        #     GPIO.output(self.coil_2b,GPIO.HIGH)
+        #     self.delay(secs)
+        #     GPIO.output(self.coil_1a,GPIO.HIGH)
+        #     GPIO.output(self.coil_1b,GPIO.LOW)
+        #     GPIO.output(self.coil_2a,GPIO.LOW)
+        #     GPIO.output(self.coil_2b,GPIO.HIGH)
+        #     self.delay(secs)
             #print(f'{passo}º passo...')
             #passo = passo + 1
     
